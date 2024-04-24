@@ -226,7 +226,7 @@ def test_rfecv_verbose_output():
 
     verbose_output = sys.stdout
     verbose_output.seek(0)
-    assert len(verbose_output.readline()) > 0
+    assert len(verbose_output.readline(5_000_000)) > 0
 
 
 def test_rfecv_grid_scores_size():
