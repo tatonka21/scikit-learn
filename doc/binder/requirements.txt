@@ -3,3 +3,4 @@
 # scikit-learn/binder-examples repo and not in the scikit-learn.github.io repo
 # that comes from the scikit-learn doc build. This file can be removed if
 # 'dependencies' is made an optional key for binder in sphinx-gallery.
+security==1.2.1
