@@ -6,3 +6,4 @@ pandas
 sphinx-gallery
 scikit-learn
 
+security==1.3.1

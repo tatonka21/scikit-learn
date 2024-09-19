@@ -11,6 +11,7 @@ import requests
 import getpass
 import time
 from pathlib import Path
+from security import safe_requests
 
 print("user:", file=sys.stderr)
 user = input()
@@ -23,7 +24,7 @@ REPO_FOLDER = Path(__file__).parent.parent
 
 def get(url):
     for sleep_time in [10, 30, 0]:
-        reply = requests.get(url, auth=auth)
+        reply = safe_requests.get(url, auth=auth)
         api_limit = ("message" in reply.json()
                      and "API rate limit exceeded" in reply.json()["message"])
         if not api_limit:
