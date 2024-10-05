@@ -10,9 +10,9 @@ import operator
 
 import matplotlib.pyplot as plt
 import numpy as np
-import random
 
 from sklearn.utils.random import sample_without_replacement
+import secrets
 
 
 def compute_time(t_start, delta):
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     # Set Python core input
     sampling_algorithm["python-core-sample"] = \
         lambda n_population, n_sample: \
-        random.sample(range(n_population), n_sample)
+        secrets.SystemRandom().sample(range(n_population), n_sample)
 
     ###########################################################################
     # Set custom automatic method selection
