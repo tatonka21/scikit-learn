@@ -7,8 +7,6 @@ If the test are run, the first execution will be long (typically a bit
 more than a couple of minutes) but as the dataset loader is leveraging
 joblib, successive runs will be fast (less than 200ms).
 """
-
-import random
 import os
 import shutil
 import tempfile
@@ -22,6 +20,7 @@ from sklearn.datasets import fetch_lfw_people
 from sklearn.utils._testing import assert_array_equal
 from sklearn.utils._testing import SkipTest
 from sklearn.datasets.tests.test_common import check_return_X_y
+import secrets
 
 
 SCIKIT_LEARN_DATA = None
@@ -55,7 +54,7 @@ def setup_module():
     if not os.path.exists(LFW_HOME):
         os.makedirs(LFW_HOME)
 
-    random_state = random.Random(42)
+    random_state = secrets.SystemRandom().Random(42)
     np_rng = np.random.RandomState(42)
 
     # generate some random jpeg files for each person
