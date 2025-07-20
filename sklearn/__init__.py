@@ -18,6 +18,7 @@ import logging
 import os
 
 from ._config import get_config, set_config, config_context
+import secrets
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
@@ -101,7 +102,6 @@ def setup_module(module):
     """Fixture for the tests to assure globally controllable seeding of RNGs"""
     import os
     import numpy as np
-    import random
 
     # Check if a random seed exists in the environment, if not create one.
     _random_seed = os.environ.get('SKLEARN_SEED', None)
@@ -110,4 +110,4 @@ def setup_module(module):
     _random_seed = int(_random_seed)
     print("I: Seeding RNGs with %r" % _random_seed)
     np.random.seed(_random_seed)
-    random.seed(_random_seed)
+    secrets.SystemRandom().seed(_random_seed)
